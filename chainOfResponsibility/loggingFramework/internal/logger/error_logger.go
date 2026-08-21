@@ -15,9 +15,9 @@ func NewErrorLogger() ErrorLogger {
 	}
 }
 
-func (this ErrorLogger) Log(msg logmessage.LogMessage) {
+func (this *ErrorLogger) Log(msg logmessage.LogMessage) {
 	if msg.GetLevel() >= 3 {
 		fmt.Printf("[ERROR] %s\n", msg.GetMessage())
 	}
-	this.forward(msg)
+	this.Forward(msg)
 }

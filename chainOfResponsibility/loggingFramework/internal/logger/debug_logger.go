@@ -15,9 +15,9 @@ func NewDebugLogger() DebugLogger {
 	}
 }
 
-func (this DebugLogger) Log(msg logmessage.LogMessage) {
+func (this *DebugLogger) Log(msg logmessage.LogMessage) {
 	if msg.GetLevel() >= 0 {
 		fmt.Printf("[DEBUG] %s\n", msg.GetMessage())
 	}
-	this.forward(msg)
+	this.Forward(msg)
 }

@@ -15,9 +15,9 @@ func NewInfoLogger() InfoLogger {
 	}
 }
 
-func (this InfoLogger) Log(msg logmessage.LogMessage) {
+func (this *InfoLogger) Log(msg logmessage.LogMessage) {
 	if msg.GetLevel() >= 1 {
 		fmt.Printf("[INFO] %s\n", msg.GetMessage())
 	}
-	this.forward(msg)
+	this.Forward(msg)
 }

@@ -15,9 +15,9 @@ func NewWarnLogger() WarnLogger {
 	}
 }
 
-func (this WarnLogger) Log(msg logmessage.LogMessage) {
+func (this *WarnLogger) Log(msg logmessage.LogMessage) {
 	if msg.GetLevel() >= 2 {
 		fmt.Printf("[WARN] %s\n", msg.GetMessage())
 	}
-	this.forward(msg)
+	this.Forward(msg)
 }

@@ -2,12 +2,13 @@ package main
 
 import (
 	"loggingframework/internal/enum"
-	"loggingframework/internal/logMessage"
+	logmessage "loggingframework/internal/logMessage"
 	"loggingframework/internal/logger"
+	"loggingframework/internal/logger/decorator"
 )
 
 func main() {
-	msg := logmessage.NewLogMessage(enum.ERROR, "Hello World")
+	msg := logmessage.NewLogMessage(enum.INFO, "Hello World")
 
 	debugLogger := logger.NewDebugLogger()
 	infoLogger := logger.NewInfoLogger()
@@ -18,6 +19,8 @@ func main() {
 	infoLogger.SetNext(&warnLogger)
 	warnLogger.SetNext(&errorLogger)
 
-	debugLogger.Log(msg)
+	logger := decorator.NewColorDecorator(&debugLogger)
+
+	logger.Log(msg)
 
 }

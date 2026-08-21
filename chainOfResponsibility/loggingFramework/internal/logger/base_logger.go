@@ -5,7 +5,6 @@ import (
 )
 
 type Logger interface {
-	SetNext(next Logger)
 	Log(msg logmessage.LogMessage)
 }
 
@@ -21,7 +20,7 @@ func (this *BaseLogger) SetNext(next Logger) {
 	this.next = next
 }
 
-func (this *BaseLogger) forward(msg logmessage.LogMessage) {
+func (this *BaseLogger) Forward(msg logmessage.LogMessage) {
 	if this.next != nil {
 		this.next.Log(msg)
 	}
